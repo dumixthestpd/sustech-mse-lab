@@ -1,0 +1,3 @@
+Store this report's figure files here and reference them as `fig/<name>.png`
+in `\includegraphics`. This folder ships with `templates/` and is copied into
+the report working directory.

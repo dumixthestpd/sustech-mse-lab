@@ -1,0 +1,172 @@
+% Template report — compile test for sustech-labreport.cls
+% Compile with xelatex (Times New Roman + xeCJK for the Chinese name).
+% Prefer scripts/auto_gen_template.py over copying this file by hand: the
+% script fills the cover from the live CLI (course, name, SID, experiment
+% date). Replace every <...> marker that remains.
+% Section names follow the course convention — keep them, they auto-number.
+\documentclass[12pt]{sustech-labreport}
+% The course rulebook writes figure captions as "Fig. 1"; the class alone
+% prints "Figure 1". Keep this line. Table captions stay "Table N".
+\captionsetup[figure]{name=Fig.}
+\begin{document}
+
+\makesutitle
+  {Experiments for Advanced Materials Science and Engineering I}
+  {Experiment N: <Experiment title>}
+  {<Name>}
+  {<SID>}
+  {YYYY/MM/DD}
+  {}
+  {}
+
+% Headings are auto-numbered (1., 2., ...) by the class — never type the
+% numbers by hand and never use starred headings. Subheadings below a
+% section auto-number 5.1, 5.1.1.
+
+\section{Objectives}
+\begin{enumerate}
+  \item To <goal 1 of the experiment, taken from the manual>.
+  \item To <goal 2: the characterisation or skill to master>.
+\end{enumerate}
+
+\section{Principles}
+<Condensed theory behind the experiment — key formulas and the principle
+figure. Keep within one page. Do not teach textbook background.>
+
+% No blank line before display math (it creates a spurious paragraph break),
+% and the label goes on the SAME line as \begin{equation}:
+\begin{equation}\label{eq:main}
+<the governing relation>
+\end{equation}
+
+\section{Experimental Materials and Setups}
+Chemicals: <reagent 1>, <reagent 2>, ...
+Apparatuses: <apparatus 1>, <apparatus 2>, ...
+Tools: <tool 1>, <tool 2>, ...
+
+% APPARATUS / SETUP PHOTOS BELONG HERE (or in Procedures) — never in Results.
+
+\section{Experimental Procedures}
+% In-class parameters override the manual's; write what was actually done.
+\begin{enumerate}
+  \item <Step 1 of the in-class operation>.
+  \item <Step 2>.
+  \item <Step 3>.
+\end{enumerate}
+
+\section{Results and Discussion}
+% THREE sub-sections, in the order of the work: you see, then you calculate,
+% then you analyze. Phenomena comes first and is plain prose, no numbers.
+\subsection{Phenomena}
+<What was seen: color, appearance, when it changed, what was surprising.>
+
+\subsection{Experimental Data}
+<2-3 sentences of prose carrying the key measured numbers, then the table.>
+
+% TABLE RECIPE — three-line booktabs; caption ABOVE; label right after the
+% caption. Every cell names the quantity and its unit, in words:
+%   "Mass of \ce{CuCl2.2H2O} (g)"   NOT   "m(CuCl2.2H2O) / g"
+% NO Note block by default — add one only for a condition that cannot be
+% expressed in the table and changes how a value must be read.
+\begin{center}
+  \captionof{table}{<Concise title of the table.>}\label{tab:props}
+  \begin{tabular}{lc}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    Density of sample A ($\rho$, g\,cm$^{-3}$)  & 1.25 \\
+    Tensile strength of sample A ($\sigma$, MPa) & 85.2 \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+% Only a LARGE table uses a real float instead — \begin{table}[htbp] with the
+% caption still ABOVE the tabular. Columns are centred ({cc}, {ccc}).
+% =============================================================================
+
+% =============================================================================
+% FIGURE RECIPE
+%
+% 1. ONE THEME PER FIGURE. A before/after or sample-1/2/3 comparison never
+%    shares a figure with an apparatus photo — split them into two figures.
+% 2. Subfigures: \quad between items in a row, \\ (or \bigskip) between rows.
+%    NEVER \hfill — it stretches the row to the margins and leaves visible
+%    gaps whenever the image widths do not sum to \linewidth.
+% 3. Sub-captions are SHORT — two or three words. A sentence-long
+%    sub-caption wraps into a tall ragged column next to the picture.
+% 4. Each \subfloat needs BOTH the short [...] sub-caption AND a \label
+%    inside its {} group.
+% 5. The main caption carries the description and cites the letters with
+%    \protect\subref{...} — never type (a)/(b) by hand.
+% 6. Caption BELOW the figure, \label on the next line.
+% 7. Every figure is discussed in prose ("as shown in Fig.~\ref{...}").
+%
+% Single picture:
+%   \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[height=6cm,keepaspectratio]{fig/result.jpg}
+%     \caption{<What the reader sees and the take-away.>}
+%     \label{fig:result}
+%   \end{figure}
+%
+% Two pictures that answer one question together:
+%   \begin{figure}[htbp]
+%     \centering
+%     \subfloat[Before heating]{\includegraphics[height=4cm,keepaspectratio]{fig/before.jpg}\label{fig:before}}\quad
+%     \subfloat[After heating]{\includegraphics[height=4cm,keepaspectratio]{fig/after.jpg}\label{fig:after}}
+%     \caption{Pictures of the sample before \protect\subref{fig:before} and
+%     after \protect\subref{fig:after} heating.}
+%     \label{fig:heating}
+%   \end{figure}
+%
+% Four pictures, two rows (\quad inside a row, \\ between rows):
+%   \subfloat[Room temperature]{\includegraphics[height=4cm]{fig/a}\label{fig:a}}\quad
+%   \subfloat[Above transition]{\includegraphics[height=4cm]{fig/b}\label{fig:b}}\\[1ex]
+%   \subfloat[Apparatus]{\includegraphics[height=4cm]{fig/c}\label{fig:c}}\quad
+%   \subfloat[Product]{\includegraphics[height=4cm]{fig/d}\label{fig:d}}
+%
+% Multi-panel captions follow the published style — letters inline, one
+% clause per letter:
+%   \caption{Cross-sectional images ... for 5 min at 250 $^\circ$C:
+%   (a) no additive, (b) 1 ppm, (c) 2 ppm, (d) 5 ppm.}
+%
+% SIZING: height= for photos sharing a row (equal heights keep it tidy),
+% width= for a lone image. Never set width and height without
+% keepaspectratio — it stretches the picture.
+% MICROGRAPHS AND PHOTOS NEED THE SCALE BAR AND THE MAGNIFICATION stated in
+% the caption (the teacher requires both). If the user did not give one,
+% ASK — do not infer it from the filename or from looking at the image.
+% =============================================================================
+
+\subsection{Error Analysis}
+<Required by the rubric: quantitative or qualitative error sources, and how
+ they were reduced. Never invent an uncertainty the manual or the user did not
+ state.>
+
+\section{Conclusion}
+<1-2 short paragraphs, ~300 words: what was successfully prepared, the
+ critical numbers against theory, the cause of the shortfall. No personal
+ pronouns, no "we learned".>
+
+\section{Questions and Further Thoughts}
+\begin{enumerate}
+  \item <Restate the manual's question.>
+
+  <Answer in 2-3 sentences: one physical reason plus one observation from this
+  experiment.>
+\end{enumerate}
+
+% REFERENCES — only if real literature is cited. NEVER cite the course manual;
+% if there is no other literature, delete the section entirely.
+
+\newpage
+\section{Raw Data and Preview Report}
+% The scanned handwritten preview and the raw-data record, appended as pages.
+% Never OCR them and never use their content as report content.
+\begin{center}
+  \includegraphics[width=0.86\textwidth]{fig/preview-1.png}
+\end{center}
+\begin{center}
+  \includegraphics[width=0.86\textwidth]{fig/rawdata-1.png}
+\end{center}
+
+\end{document}
