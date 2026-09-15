@@ -8,6 +8,11 @@ into a submission-ready LaTeX lab report.
 > unofficial; it can drift from reality. Whenever Blackboard, the official
 > templates or the teacher's instructions contradict anything here, the official
 > side wins.
+>
+> **The report it generates is not a final version.** You must give the agent the
+> real hands-on experiment information — what was actually done, what changed in
+> class, what you saw at the bench, and the data you recorded. All consequences of
+> unreasonable use are the user's own responsibility.
 
 ## What's inside
 
