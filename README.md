@@ -1,8 +1,8 @@
 # sustech-mse-lab
 
-Agent skills for the SUSTech MSE teaching labs (材料科学与工程高等实验) — turn an
-experiment manual into hand-copyable preview notes, and into a submission-ready
-LaTeX lab report.
+Agent skills for the SUSTech MSE teaching labs, for **any** experiment course in
+**any** year — turn an experiment manual into hand-copyable preview notes, and
+into a submission-ready LaTeX lab report.
 
 > **Third-party aid, not an official department product.** Student-made and
 > unofficial; it can drift from reality. Whenever Blackboard, the official

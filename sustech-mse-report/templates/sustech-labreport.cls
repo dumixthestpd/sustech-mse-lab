@@ -17,7 +17,7 @@
 %   \documentclass{sustech-labreport}      % 12pt (小四) baked in
 %   \begin{document}
 %   \makesutitle
-%     {Experiments for Advanced Materials Science and Engineering I}
+%     {<Course name>}
 %     {Experiment N: <Experiment title>}
 %     {<name>}        % name (Chinese OK — xeCJK)
 %     {<sid>}      % student ID
